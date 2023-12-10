@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "pgkyoFPwSRKr4Qk0edbyrXa7NYeb/tc4nq2IyS6tghWtQS6whL72Ex+2Hc7gHI/ubj93ati67bOUghGI0YnNdw==",
+  "success": true,
+  "projectFilePath": "C:\\Proyectos\\MinimalArchitecture\\MinimalArchitecture.Application\\MinimalArchitecture.Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\nacho\\.nuget\\packages\\fluentvalidation\\11.8.1\\fluentvalidation.11.8.1.nupkg.sha512",
+    "C:\\Users\\nacho\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.3.0\\fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",
+    "C:\\Users\\nacho\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.8.1\\fluentvalidation.dependencyinjectionextensions.11.8.1.nupkg.sha512",
+    "C:\\Users\\nacho\\.nuget\\packages\\mediatr\\12.2.0\\mediatr.12.2.0.nupkg.sha512",
+    "C:\\Users\\nacho\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
+    "C:\\Users\\nacho\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
