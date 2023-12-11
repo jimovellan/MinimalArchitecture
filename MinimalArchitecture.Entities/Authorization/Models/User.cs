@@ -1,4 +1,5 @@
-﻿using MinimalArchitecture.Entities.Repository;
+﻿using MinimalArchitecture.Entities.Authorization.Enums;
+using MinimalArchitecture.Entities.Repository;
 
 namespace MinimalArchitecture.Entities.Authorization.Models;
 public class User:BaseEntity
@@ -11,6 +12,7 @@ public class User:BaseEntity
     public string? Email { get; set; }
     public string? Hash { get; set; }
     public bool Active { get; set; }
+    
 
     public ICollection<Rol> Roles { get; set; }
 

@@ -33,7 +33,7 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
-
+MinimalArchitecture.Architecture.Startup.AplyMigrationsAuto(app);
 
 
 if (app.Environment.IsDevelopment())

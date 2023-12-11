@@ -24,7 +24,23 @@ namespace MinimalArchitecture.Architecture
             ConfigureMediator(serviceCollection);
             ConfigureRepositories(serviceCollection,builder);
             ConfigureServices(serviceCollection);
+            
         }
+
+        /// <summary>
+        /// Aply all migrations pending
+        /// </summary>
+        /// <param name="app"></param>
+        public static void AplyMigrationsAuto(WebApplication app)
+        {
+            using (var scope = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                var dbContext = scope.ServiceProvider.GetRequiredService<AppDBContext>();
+                dbContext.Database.Migrate();
+            }
+        }
+
+       
 
         /// <summary>
         /// configuration de external services
