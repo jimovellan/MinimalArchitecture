@@ -15,4 +15,3 @@ C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Common\obj\Debug\net7.0\Min
 C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Common\obj\Debug\net7.0\refint\MinimalArchitecture.Common.dll
 C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Common\obj\Debug\net7.0\MinimalArchitecture.Common.pdb
 C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Common\obj\Debug\net7.0\ref\MinimalArchitecture.Common.dll
-C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Common\obj\Debug\net7.0\en\MinimalArchitecture.Common.resources.cs

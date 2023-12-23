@@ -120,4 +120,10 @@
   <data name="ERROR_GENERAL" xml:space="preserve">
     <value>Hubo un error y no se pudo completar la operación.</value>
   </data>
+  <data name="TOKEN_EXPIRED" xml:space="preserve">
+    <value>El token expiró</value>
+  </data>
+  <data name="TOKEN_NOT_VALID" xml:space="preserve">
+    <value>Token no valido</value>
+  </data>
 </root>

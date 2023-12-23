@@ -16,6 +16,7 @@ namespace MinimalArchitecture.Architecture.Repository.configuration
         {
             builder.ToTable(nameof(Rol), "auth");
             builder.HasKey(x => x.Id);
+            builder.Property(x => x.Id).ValueGeneratedNever();
             builder.Property(p=>p.Description)
                     .IsRequired()
                     .HasMaxLength(50);

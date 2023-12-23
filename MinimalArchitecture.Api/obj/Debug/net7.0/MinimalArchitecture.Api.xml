@@ -4,5 +4,12 @@
         <name>MinimalArchitecture.Api</name>
     </assembly>
     <members>
+        <member name="M:MinimalArchitecture.Api.EndPoints.Token.ValidateToken(MinimalArchitecture.Application.Services.ITokenService,System.String)">
+            <summary>
+            Validate de integrity of tokken
+            </summary>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

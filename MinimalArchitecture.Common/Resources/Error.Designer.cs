@@ -68,5 +68,23 @@ namespace MinimalArchitecture.Common.Resources {
                 return ResourceManager.GetString("ERROR_GENERAL", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El token expiró.
+        /// </summary>
+        public static string TOKEN_EXPIRED {
+            get {
+                return ResourceManager.GetString("TOKEN_EXPIRED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Token no valido.
+        /// </summary>
+        public static string TOKEN_NOT_VALID {
+            get {
+                return ResourceManager.GetString("TOKEN_NOT_VALID", resourceCulture);
+            }
+        }
     }
 }

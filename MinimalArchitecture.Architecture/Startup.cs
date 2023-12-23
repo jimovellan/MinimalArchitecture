@@ -6,12 +6,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MinimalArchitecture.Application.Features.Autorization.Login;
 using MinimalArchitecture.Application.Services;
+using MinimalArchitecture.Architecture.Config;
 using MinimalArchitecture.Architecture.Pipelines;
 using MinimalArchitecture.Architecture.Repository;
 using MinimalArchitecture.Architecture.Services;
 using MinimalArchitecture.Entities.Repository;
-using System.Configuration;
 using System.Reflection;
+using Microsoft.Extensions.Configuration;
+
 
 namespace MinimalArchitecture.Architecture
 {
@@ -21,10 +23,18 @@ namespace MinimalArchitecture.Architecture
 
         public static void Configure(IServiceCollection serviceCollection,WebApplicationBuilder builder)
         {
+            
+            LoadOptions(serviceCollection, builder.Configuration);
             ConfigureMediator(serviceCollection);
             ConfigureRepositories(serviceCollection,builder);
             ConfigureServices(serviceCollection);
             
+        }
+
+        public static void LoadOptions(IServiceCollection serviceCollection, ConfigurationManager configuration)
+        {
+            
+            serviceCollection.Configure<JWTSettings>(configuration.GetSection("jwt"));
         }
 
         /// <summary>
@@ -49,6 +59,8 @@ namespace MinimalArchitecture.Architecture
         private static void ConfigureServices(IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped<IPasswordValidation, PasswordValidatorService>();
+            serviceCollection.AddSingleton<IPasswordValidation, PasswordValidatorService>();
+            serviceCollection.AddSingleton<ITokenService, JWTTokenService>();
         }
 
         /// <summary>
@@ -57,6 +69,7 @@ namespace MinimalArchitecture.Architecture
         /// <param name="serviceCollection"></param>
         private static void ConfigureRepositories(IServiceCollection serviceCollection,WebApplicationBuilder builder)
         {
+            
             serviceCollection.AddDbContext<AppDBContext>(options =>
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("app"));

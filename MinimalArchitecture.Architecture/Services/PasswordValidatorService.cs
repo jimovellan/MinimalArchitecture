@@ -11,12 +11,12 @@ namespace MinimalArchitecture.Architecture.Services
     {
         public string GenerateHash(string password)
         {
-            throw new NotImplementedException();
+            return BCrypt.Net.BCrypt.HashPassword(password);
         }
 
         public bool Validate(string password, string hash)
         {
-            throw new NotImplementedException();
+            return BCrypt.Net.BCrypt.Verify(password, hash);
         }
     }
 }

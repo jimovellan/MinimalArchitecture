@@ -8,6 +8,7 @@ C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Api\bin\Debug\net7.0\Minima
 C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Api\bin\Debug\net7.0\MinimalArchitecture.Api.xml
 C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Api\bin\Debug\net7.0\Azure.Core.dll
 C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Api\bin\Debug\net7.0\Azure.Identity.dll
+C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Api\bin\Debug\net7.0\BCrypt.Net-Core.dll
 C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Api\bin\Debug\net7.0\Carter.dll
 C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Api\bin\Debug\net7.0\EntityFramework.SqlServer.dll
 C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Api\bin\Debug\net7.0\EntityFramework.dll
@@ -100,3 +101,4 @@ C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Api\obj\Debug\net7.0\Minima
 C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Api\obj\Debug\net7.0\MinimalArchitecture.Api.pdb
 C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Api\obj\Debug\net7.0\MinimalArchitecture.Api.genruntimeconfig.cache
 C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Api\obj\Debug\net7.0\ref\MinimalArchitecture.Api.dll
+C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Api\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

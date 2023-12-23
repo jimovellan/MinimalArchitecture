@@ -5,15 +5,26 @@ using Microsoft.OpenApi.Models;
 using MinimalArchitecture.Api.EndPoints;
 using MinimalArchitecture.Api.Middlewares;
 using System.Reflection;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using MinimalArchitecture.Api.configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+
+
+builder.Services.AddOptions();
+builder.Configuration.SetBasePath(Directory.GetCurrentDirectory())
+                    .AddJsonFile("appsettings.Development.json", optional: false, reloadOnChange: true);
+
+
+builder.Services.AddAuthenticationCustom(builder.Configuration);
 builder.Services.AddHttpContextAccessor();
-
-
-
 builder.Services.AddCarter();
-
+builder.Services.AddAuthorization();
 //All configuration of architecture
 //Mediator
 //validations
@@ -33,8 +44,11 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
-MinimalArchitecture.Architecture.Startup.AplyMigrationsAuto(app);
 
+
+
+
+MinimalArchitecture.Architecture.Startup.AplyMigrationsAuto(app);
 
 if (app.Environment.IsDevelopment())
 {
@@ -47,14 +61,11 @@ if (app.Environment.IsDevelopment())
 
 app.MapCarter();
 
+app.AuthenticationAndAutenticationCustom();
+
 #region Middlewares
 app.UseMiddleware<LanguageMiddleware>();
 app.UseMiddleware<CatchErrorMiddleware>();
 #endregion
-
-
-
-
-
 
 app.Run();
