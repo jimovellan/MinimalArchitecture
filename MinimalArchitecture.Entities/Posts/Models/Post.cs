@@ -9,9 +9,14 @@ namespace MinimalArchitecture.Entities.Posts.Models
 {
     public class Post : BaseEntity
     {
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public string Html { get; set; }
+        public Post()
+        {
+            Tags = new List<Tag>();
+        }
+        public int Id { get; set; }
+        public string Title { get; set; } = default!;
+        public string Description { get; set; } = default!;
+        public string Html { get; set; } = default!;
 
         public int Owner { get; set; }
 

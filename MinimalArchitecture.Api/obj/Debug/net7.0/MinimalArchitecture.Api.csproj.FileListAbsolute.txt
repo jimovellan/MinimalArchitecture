@@ -84,7 +84,6 @@ C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Api\obj\Debug\net7.0\Minima
 C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Api\obj\Debug\net7.0\MinimalArchitecture.Api.AssemblyInfoInputs.cache
 C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Api\obj\Debug\net7.0\MinimalArchitecture.Api.AssemblyInfo.cs
 C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Api\obj\Debug\net7.0\MinimalArchitecture.Api.csproj.CoreCompileInputs.cache
-C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Api\obj\Debug\net7.0\MinimalArchitecture.Api.MvcApplicationPartsAssemblyInfo.cs
 C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Api\obj\Debug\net7.0\MinimalArchitecture.Api.MvcApplicationPartsAssemblyInfo.cache
 C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Api\obj\Debug\net7.0\staticwebassets\msbuild.MinimalArchitecture.Api.Microsoft.AspNetCore.StaticWebAssets.props
 C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Api\obj\Debug\net7.0\staticwebassets\msbuild.build.MinimalArchitecture.Api.props
@@ -102,3 +101,4 @@ C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Api\obj\Debug\net7.0\Minima
 C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Api\obj\Debug\net7.0\MinimalArchitecture.Api.genruntimeconfig.cache
 C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Api\obj\Debug\net7.0\ref\MinimalArchitecture.Api.dll
 C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Api\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Api\obj\Debug\net7.0\MinimalArchitecture.Api.MvcApplicationPartsAssemblyInfo.cs

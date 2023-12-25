@@ -120,10 +120,16 @@
   <data name="ERROR_GENERAL" xml:space="preserve">
     <value>was a problem and the operation end can't be completed</value>
   </data>
+  <data name="LOGIN_INVALID" xml:space="preserve">
+    <value>Invalid login</value>
+  </data>
   <data name="TOKEN_EXPIRED" xml:space="preserve">
     <value>Token is expired</value>
   </data>
   <data name="TOKEN_NOT_VALID" xml:space="preserve">
     <value>Token no valido</value>
+  </data>
+  <data name="USR_NOT_FOUND" xml:space="preserve">
+    <value>The user wasn't found</value>
   </data>
 </root>

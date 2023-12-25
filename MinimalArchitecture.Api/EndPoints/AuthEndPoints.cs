@@ -3,44 +3,49 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MinimalArchitecture.Application.Features.Autorization.Login;
+using MinimalArchitecture.Application.Features.Autorization.RefreshToken;
 using MinimalArchitecture.Application.Services;
 using MinimalArchitecture.Common.Results;
 using MinimalArchitecture.Entities.Authorization.Models;
+using System.Reflection.Metadata.Ecma335;
 
 namespace MinimalArchitecture.Api.EndPoints;
 public class AuthEndPoints : CarterModule
 {
-    
+
+    public AuthEndPoints():base("api/auth")
+    {
+        this.RequireAuthorization();   
+       
+    }
     public override void AddRoutes(IEndpointRouteBuilder app)
     {
         
-        var map = app.MapGroup("api/Auth");
-        map.MapPost("",Loggin);
-        map.MapGet("{identificador}",Get);
+        var map = app.MapGroup("");
         
-    }
+        map.MapPost("Login",async Task<Result<LoginReponse>>(LoginRequest request, IMediator mediator, ITokenService tokenService, CancellationToken cancellationToken) =>
+        {
+            
 
-    [Authorize]
-    [HttpGet()]
-    public static async Task<IResult> Get(string identificador){
-        return Results.Ok(identificador);
-    }
+            var result = await mediator.Send(request, cancellationToken);
 
-    [ProducesResponseType(typeof(Result<string>), StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async static Task<Result<string>> Loggin(LoginRequest request, IMediator mediator, ITokenService tokenService, CancellationToken cancellationToken)
-    {
+            return result;
 
-
-        var user = new User() { Active = true, Email = "jimovllan@gmail.com", Name = "Nacho movellan", Roles = new List<Rol>() { new Rol() { Description = "Administrador", Id = 1, RolType = Entities.Authorization.Enums.RolType.Admin } } };
+        })
+            .AllowAnonymous();
         
+        map.MapGet("{identificador}",async Task<Result<String>>(string identificador) => Result.Ok(identificador) );
 
-        var token = tokenService.GenerateToken(user);
-
-       //var result = await mediator.Send(token, cancellationToken);
-
-        return Result.Ok(token);
+        map.MapPost("RefreshToken", 
+            async Task<Result<RefreshTokenResponse>> (RefreshTokenRequest request, IMediator mediator, CancellationToken cancellation) => await mediator.Send(request))
+            .AllowAnonymous();
+            
     }
+
+  
+   
+
+    
     
 
     

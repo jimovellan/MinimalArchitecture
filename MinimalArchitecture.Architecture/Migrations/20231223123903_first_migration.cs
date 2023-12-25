@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -50,7 +51,7 @@ namespace MinimalArchitecture.Architecture.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Tag",
+                name: "User",
                 schema: "auth",
                 columns: table => new
                 {
@@ -63,7 +64,7 @@ namespace MinimalArchitecture.Architecture.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Tag", x => x.Id);
+                    table.PrimaryKey("PK_User", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -89,26 +90,52 @@ namespace MinimalArchitecture.Architecture.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Rol",
+                schema: "auth",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Id = table.Column<int>(type: "int", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    RolType = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Rol", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Rol_Tag_UserId",
+                        name: "FK_Rol_User_UserId",
                         column: x => x.UserId,
                         principalSchema: "auth",
-                        principalTable: "Tag",
+                        principalTable: "User",
                         principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Token",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AsociatedToken = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    RefreshToken = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ExpirationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Active = table.Column<bool>(type: "bit", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Token", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Token_User_UserId",
+                        column: x => x.UserId,
+                        principalSchema: "auth",
+                        principalTable: "User",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Rol_UserId",
+                schema: "auth",
                 table: "Rol",
                 column: "UserId");
 
@@ -117,6 +144,11 @@ namespace MinimalArchitecture.Architecture.Migrations
                 schema: "post",
                 table: "Tag",
                 column: "PostId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Token_UserId",
+                table: "Token",
+                column: "UserId");
         }
 
         /// <inheritdoc />
@@ -127,19 +159,23 @@ namespace MinimalArchitecture.Architecture.Migrations
                 schema: "post");
 
             migrationBuilder.DropTable(
-                name: "Rol");
+                name: "Rol",
+                schema: "auth");
 
             migrationBuilder.DropTable(
                 name: "Tag",
                 schema: "post");
 
             migrationBuilder.DropTable(
-                name: "Tag",
-                schema: "auth");
+                name: "Token");
 
             migrationBuilder.DropTable(
                 name: "Post",
                 schema: "post");
+
+            migrationBuilder.DropTable(
+                name: "User",
+                schema: "auth");
         }
     }
 }

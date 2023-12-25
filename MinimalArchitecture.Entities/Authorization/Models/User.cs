@@ -8,6 +8,7 @@ public class User:BaseEntity
     {
         Roles = new List<Rol>();
     }
+    public int Id { get; set; }
     public string? Name { get; set; }
     public string? Email { get; set; }
     public string? Hash { get; set; }
@@ -15,6 +16,7 @@ public class User:BaseEntity
     
 
     public ICollection<Rol> Roles { get; set; }
+    public ICollection<Token> Tokens { get; set; }
 
 
 }

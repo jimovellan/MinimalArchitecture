@@ -13,7 +13,7 @@ using MinimalArchitecture.Architecture.Services;
 using MinimalArchitecture.Entities.Repository;
 using System.Reflection;
 using Microsoft.Extensions.Configuration;
-
+using MinimalArchitecture.Application.Features.Autorization.SeedMinimalData;
 
 namespace MinimalArchitecture.Architecture
 {
@@ -37,11 +37,33 @@ namespace MinimalArchitecture.Architecture
             serviceCollection.Configure<JWTSettings>(configuration.GetSection("jwt"));
         }
 
+        public static void SeedDataNecesary(this WebApplication builder)
+        {
+
+            using (var scope = builder.Services.CreateScope())
+            {
+                var mediator = scope.ServiceProvider.GetService<IMediator>();
+                var result = mediator.Send(new SeedMinimalDataRequest()).Result;
+            }
+            
+
+            //var result = mediator.Send(new SeedMinimalDataRequest()).Result;
+
+            //if (result.IsFailed)
+            //{
+            //    throw new Exception("Error al crear los datos minimos");
+            //}
+
+            //var x = mediator.Send(new LoginRequest() { Password = "dd", User = "dd" }).Result;
+
+
+        }
+
         /// <summary>
         /// Aply all migrations pending
         /// </summary>
         /// <param name="app"></param>
-        public static void AplyMigrationsAuto(WebApplication app)
+        public static void AplyMigrationsAuto(this WebApplication app)
         {
             using (var scope = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
@@ -78,6 +100,8 @@ namespace MinimalArchitecture.Architecture
             
             serviceCollection.AddScoped<ISpecificationResolver, SpecificationResolver>();
             serviceCollection.AddScoped(typeof(IRepositoryBase<>), typeof(SqlServerRepository<>));
+
+            serviceCollection.AddScoped<IUnitOfWork, UnitOfWork>();
         }
 
         /// <summary>

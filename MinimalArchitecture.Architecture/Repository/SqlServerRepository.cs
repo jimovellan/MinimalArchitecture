@@ -67,7 +67,7 @@ namespace MinimalArchitecture.Architecture.Repository
            return _ctx.Set<T>().AsQueryable();
         }
 
-        public async Task<IEnumerable<T>> GetWithSpecAsync(SpecificationPattern<T> spec, CancellationToken cancellation)
+        public async Task<IEnumerable<T>> GetWithSpecAsync(SpecificationPattern<T> spec, CancellationToken cancellation = default)
         {
             return await _specificationResolver.Execute(spec, cancellation);
         }

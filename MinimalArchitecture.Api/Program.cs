@@ -10,6 +10,8 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using MinimalArchitecture.Api.configuration;
+using Microsoft.AspNetCore.Mvc.Authorization;
+using MinimalArchitecture.Architecture;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +25,7 @@ builder.Configuration.SetBasePath(Directory.GetCurrentDirectory())
 
 builder.Services.AddAuthenticationCustom(builder.Configuration);
 builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddCarter();
 builder.Services.AddAuthorization();
 //All configuration of architecture
@@ -32,14 +35,37 @@ builder.Services.AddAuthorization();
 //databases
 MinimalArchitecture.Architecture.Startup.Configure(builder.Services,builder);
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(c =>
+builder.Services.AddSwaggerGen(setup =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Minimal Architecture", Version = "v1" });
+    setup.SwaggerDoc("v1", new OpenApiInfo { Title = "Minimal Architecture", Version = "v1" });
 
     // Ruta al archivo XML de comentarios
     var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-    c.IncludeXmlComments(xmlPath);
+    setup.IncludeXmlComments(xmlPath);
+
+    var jwtSecurityScheme = new OpenApiSecurityScheme
+    {
+        BearerFormat = "JWT",
+        Name = "JWT Authentication",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.Http,
+        Scheme = JwtBearerDefaults.AuthenticationScheme,
+        Description = "Put **_ONLY_** your JWT Bearer token on textbox below!",
+
+        Reference = new OpenApiReference
+        {
+            Id = JwtBearerDefaults.AuthenticationScheme,
+            Type = ReferenceType.SecurityScheme
+        }
+    };
+
+    setup.AddSecurityDefinition(jwtSecurityScheme.Reference.Id, jwtSecurityScheme);
+
+    setup.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        { jwtSecurityScheme, Array.Empty<string>() }
+    });
 });
 
 var app = builder.Build();
@@ -63,9 +89,13 @@ app.MapCarter();
 
 app.AuthenticationAndAutenticationCustom();
 
+
+
 #region Middlewares
 app.UseMiddleware<LanguageMiddleware>();
 app.UseMiddleware<CatchErrorMiddleware>();
 #endregion
+
+app.SeedDataNecesary();
 
 app.Run();

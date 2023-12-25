@@ -34,7 +34,7 @@ namespace MinimalArchitecture.Architecture.Pipelines
                 var errors = _validators.Select(s => s.Validate(request))
                                 .SelectMany(s => s.Errors)
                                 .Where(w => w is not null)
-                                .Select(s => new Error(s.ErrorCode, s.ErrorMessage))
+                                .Select(s => new DomainError(s.ErrorCode, s.ErrorMessage))
                                 .AsEnumerable();
 
                 if (errors.HasElements())

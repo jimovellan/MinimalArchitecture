@@ -10,9 +10,9 @@ namespace MinimalArchitecture.Architecture.Repository
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly DbContext _ctx;
+        private readonly AppDBContext _ctx;
 
-        public UnitOfWork(DbContext context)
+        public UnitOfWork(AppDBContext context)
         {
             _ctx = context;
         }

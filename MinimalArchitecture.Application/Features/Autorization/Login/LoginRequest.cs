@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MinimalArchitecture.Application.Features.Autorization.Login
 {
-    public class LoginRequest : IRequest<Result<string>>
+    public class LoginRequest : IRequest<Result<LoginReponse>>
     {
         public string? User { get; set; }
         public string? Password { get; set; }

@@ -12,8 +12,8 @@ using MinimalArchitecture.Architecture.Repository;
 namespace MinimalArchitecture.Architecture.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20231210194723_rol_type2")]
-    partial class rol_type2
+    [Migration("20231223123903_first_migration")]
+    partial class first_migration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,10 +28,7 @@ namespace MinimalArchitecture.Architecture.Migrations
             modelBuilder.Entity("MinimalArchitecture.Entities.Authorization.Models.Rol", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -49,6 +46,38 @@ namespace MinimalArchitecture.Architecture.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Rol", "auth");
+                });
+
+            modelBuilder.Entity("MinimalArchitecture.Entities.Authorization.Models.Token", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("Active")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("AsociatedToken")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ExpirationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("RefreshToken")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Token");
                 });
 
             modelBuilder.Entity("MinimalArchitecture.Entities.Authorization.Models.User", b =>
@@ -77,9 +106,6 @@ namespace MinimalArchitecture.Architecture.Migrations
                         .IsRequired()
                         .HasMaxLength(128)
                         .HasColumnType("nvarchar(128)");
-
-                    b.Property<int>("RolType")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -170,6 +196,17 @@ namespace MinimalArchitecture.Architecture.Migrations
                         .HasForeignKey("UserId");
                 });
 
+            modelBuilder.Entity("MinimalArchitecture.Entities.Authorization.Models.Token", b =>
+                {
+                    b.HasOne("MinimalArchitecture.Entities.Authorization.Models.User", "User")
+                        .WithMany("Tokens")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("MinimalArchitecture.Entities.Posts.Models.Tag", b =>
                 {
                     b.HasOne("MinimalArchitecture.Entities.Posts.Models.Post", null)
@@ -180,6 +217,8 @@ namespace MinimalArchitecture.Architecture.Migrations
             modelBuilder.Entity("MinimalArchitecture.Entities.Authorization.Models.User", b =>
                 {
                     b.Navigation("Roles");
+
+                    b.Navigation("Tokens");
                 });
 
             modelBuilder.Entity("MinimalArchitecture.Entities.Posts.Models.Post", b =>

@@ -22,12 +22,12 @@ namespace MinimalArchitecture.Common.Results
         [JsonIgnore]
         public CancellationToken CancellationToken { get; }
 
-        private IEnumerable<Error> _errors = new List<Error>();
+        private IEnumerable<DomainError> _errors = new List<DomainError>();
         public bool IsFailed => _errors.HasElements();
 
-        public IReadOnlyCollection<Error> Errors => _errors.ToList().AsReadOnly();
+        public IReadOnlyCollection<DomainError> Errors => _errors.ToList().AsReadOnly();
 
-        protected internal Result(IEnumerable<Error> errors, CancellationToken cancellationToken)
+        protected internal Result(IEnumerable<DomainError> errors, CancellationToken cancellationToken)
         {
             AddErrors(errors);
             CancellationToken = cancellationToken;
@@ -38,21 +38,21 @@ namespace MinimalArchitecture.Common.Results
             CancellationToken = cancellationToken;
         }
 
-        public void AddError(Error error)
+        public void AddError(DomainError error)
         {
             _errors = _errors.Append(error);
         }
 
-        public void AddErrors(IEnumerable<Error> errors)
+        public void AddErrors(IEnumerable<DomainError> errors)
         {
             _errors = errors.Aggregate(_errors, (acum, error) => acum = acum.Append(error));
         }
 
-        public static Result Fail(IEnumerable<Error> errors, CancellationToken cancellationToken = default)
+        public static Result Fail(IEnumerable<DomainError> errors, CancellationToken cancellationToken = default)
         {
             return new Result(errors, cancellationToken);
         }
-        public static Result Fail(Error error, CancellationToken cancellationToken = default)
+        public static Result Fail(DomainError error, CancellationToken cancellationToken = default)
         {
             return new Result(new[] { error }, cancellationToken);
         }
@@ -63,9 +63,14 @@ namespace MinimalArchitecture.Common.Results
         }
 
 
-        public static Result<T> Fail<T>(IEnumerable<Error> errors, CancellationToken cancellationToken)
+        public static Result<T> Fail<T>(IEnumerable<DomainError> errors, CancellationToken cancellationToken = default)
         {
             return new Result<T>(errors, cancellationToken);
+        }
+
+        public static Result<T> Fail<T>(DomainError error, CancellationToken cancellationToken = default)
+        {
+            return new Result<T>(new List<DomainError> { error}, cancellationToken);
         }
 
         public static Result<T> Ok<T>(T value, CancellationToken cancellationToken = default)
@@ -83,7 +88,7 @@ namespace MinimalArchitecture.Common.Results
         }
         public TValue Value { get; private set; }
 
-        protected internal Result(IEnumerable<Error> errors, CancellationToken cancellationToken = default)
+        protected internal Result(IEnumerable<DomainError> errors, CancellationToken cancellationToken = default)
             :base(errors, cancellationToken)
         {
             
@@ -92,6 +97,11 @@ namespace MinimalArchitecture.Common.Results
         protected internal Result(TValue value, CancellationToken cancellationToken = default):base(cancellationToken)
         {
             Value = value;
+        }
+
+        public static implicit operator Result<TValue>(TValue miClase)
+        {
+            return Result.Ok(miClase);
         }
     }
 }

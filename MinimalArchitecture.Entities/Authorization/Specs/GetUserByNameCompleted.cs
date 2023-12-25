@@ -11,16 +11,19 @@ namespace MinimalArchitecture.Entities.Authorization.Specs
 {
     public class GetUserByNameCompleted: SpecificationPattern<User>
     {
-        public GetUserByNameCompleted(string userName):base()
+        public GetUserByNameCompleted(string userName, bool active = true, bool track = true):base()
         {
-            Filter = user => user.Name == userName;
+            Filter = user => user.Name == userName && user.Active == active;
 
             Includes = new List<Expression<Func<User, object>>>()
             {
-                i=>i.Roles
+                i=>i.Roles,
+                i =>i.Tokens
             };
 
-            Caching = false;
+
+
+            Caching = track;
         }
 
         

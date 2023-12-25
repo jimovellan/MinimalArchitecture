@@ -39,20 +39,25 @@ namespace MinimalArchitecture.Architecture.Repository
         /// <exception cref="NotImplementedException"></exception>
         private void Seed(ModelBuilder modelBuilder)
         {
-        //    modelBuilder.Entity<Rol>().HasData(
-        //    new Rol { Description = "Administrador", RolType = Entities.Authorization.Enums.RolType.All }
-           
-        //// Agrega más datos según sea necesario...
-        //);
 
             
 
-        //    modelBuilder.Entity<User>().HasData
-        //        (
-        //        new User() { Name = "Administrador", Email = "Administrador@gmail.com", Active = true }
-        //        );
+            //var data =  modelBuilder.Entity<Rol>().HasData(
+            //new Rol { Id=1, Description = "Administrador", RolType = Entities.Authorization.Enums.RolType.All, },
+            //new Rol { Id=2, Description = "Lector", RolType = Entities.Authorization.Enums.RolType.Read},
+            //new Rol { Id=3, Description = "Publicador", RolType = Entities.Authorization.Enums.RolType.ReadWrite}
+
+            //// Agrega más datos según sea necesario...
+            //);
 
             
+
+            //modelBuilder.Entity<User>().HasData
+            //    (
+            //    new User() { Name = "Administrador", Email = "Administrador@gmail.com", Active = true }
+            //    );
+
+
         }
 
         /// <summary>

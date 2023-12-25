@@ -20,6 +20,7 @@ namespace MinimalArchitecture.Architecture.Repository.configuration
             builder.Property(x=>x.Email).IsRequired().HasMaxLength(128);
             builder.Property(x=>x.Active).HasDefaultValue(true);
             builder.Property(x => x.Hash).IsRequired();
+            builder.HasMany(x => x.Tokens);
         }
     }
 }

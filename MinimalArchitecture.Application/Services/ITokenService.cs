@@ -1,4 +1,5 @@
-﻿using MinimalArchitecture.Common.Results;
+﻿using MinimalArchitecture.Application.Dto.Authentication;
+using MinimalArchitecture.Common.Results;
 using MinimalArchitecture.Entities.Authorization.Models;
 using System;
 using System.Collections.Generic;
@@ -23,5 +24,12 @@ namespace MinimalArchitecture.Application.Services
         /// <param name="token"></param>
         /// <returns>code: TKEXPIRED when the token is expired and TKNOTVALID when was a error in the validation</returns>
         Result ValidateToken(string token);
+
+        /// <summary>
+        /// Get user info from token
+        /// </summary>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        Result<UserInfo> GetUser(string token);
     }
 }

@@ -70,6 +70,15 @@ namespace MinimalArchitecture.Common.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Login invalido.
+        /// </summary>
+        public static string LOGIN_INVALID {
+            get {
+                return ResourceManager.GetString("LOGIN_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a El token expiró.
         /// </summary>
         public static string TOKEN_EXPIRED {
@@ -84,6 +93,15 @@ namespace MinimalArchitecture.Common.Resources {
         public static string TOKEN_NOT_VALID {
             get {
                 return ResourceManager.GetString("TOKEN_NOT_VALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El usuario no fue encontrado.
+        /// </summary>
+        public static string USR_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("USR_NOT_FOUND", resourceCulture);
             }
         }
     }

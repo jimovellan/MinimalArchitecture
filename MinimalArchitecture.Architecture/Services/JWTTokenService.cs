@@ -1,11 +1,14 @@
 ﻿using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using MinimalArchitecture.Application.Dto.Authentication;
 using MinimalArchitecture.Application.Services;
 using MinimalArchitecture.Architecture.Config;
+using MinimalArchitecture.Common.Errors;
 using MinimalArchitecture.Common.Extensions;
 using MinimalArchitecture.Common.Models;
 using MinimalArchitecture.Common.Results;
+using MinimalArchitecture.Entities.Authorization.Enums;
 using MinimalArchitecture.Entities.Authorization.Models;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -54,7 +57,7 @@ namespace MinimalArchitecture.Architecture.Services
 
             return new JwtSecurityTokenHandler().WriteToken(tokenDescriptor);
 
-            
+
 
         }
 
@@ -84,17 +87,45 @@ namespace MinimalArchitecture.Architecture.Services
             catch (SecurityTokenExpiredException ex)
             {
                 _logger.LogError(ex, "JWTTokenService - ValidateToken - EXPIRED");
-                return Result.Fail(Common.Errors.Token.ExpiredToken);
+                return Result.Fail(Common.Errors.TokenErrors.ExpiredToken);
             }
-            catch(SecurityTokenException ex)
+            catch (SecurityTokenException ex)
             {
                 _logger.LogError(ex, "JWTTokenService - ValidateToken - ERROR");
-                return Result.Fail(Common.Errors.Token.NotValidToken);
+                return Result.Fail(Common.Errors.TokenErrors.NotValidToken);
             }
-           
 
 
 
-    }
+
+        }
+
+        public Result<UserInfo> GetUser(string token)
+        {
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+
+            var jwtToken = tokenHandler.ReadToken(token) as JwtSecurityToken;
+
+            if (jwtToken is null) return Result.Fail<UserInfo>(TokenErrors.NotValidToken);
+
+            var userInfo = new UserInfo()
+            {
+                Email = jwtToken.Claims.FirstOrDefault(w => w.Type == ClaimTypes.Email)?.Value ?? "Undefined",
+                Id = int.Parse(jwtToken.Claims.FirstOrDefault(w => w.Type == ClaimTypes.Sid)?.Value ?? "0"),
+                Name = jwtToken.Claims.FirstOrDefault(w => w.Type == ClaimTypes.Name)?.Value ?? "Undefined",
+            };
+
+            var roles = jwtToken.Claims.Where(w => w.Type == ClaimTypes.Role).Select(s=>s.Value) ?? new List<string>();
+
+
+            foreach (var rol in roles)
+            {
+                userInfo.Rol.Add((RolType)int.Parse(rol));
+            }
+
+            return userInfo;
+
+        }
     }
 }
