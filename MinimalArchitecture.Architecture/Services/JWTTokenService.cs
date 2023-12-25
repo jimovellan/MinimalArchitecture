@@ -102,29 +102,24 @@ namespace MinimalArchitecture.Architecture.Services
 
         public Result<UserInfo> GetUser(string token)
         {
-
-            var tokenHandler = new JwtSecurityTokenHandler();
-
-            var jwtToken = tokenHandler.ReadToken(token) as JwtSecurityToken;
-
-            if (jwtToken is null) return Result.Fail<UserInfo>(TokenErrors.NotValidToken);
-
-            var userInfo = new UserInfo()
+            try
             {
-                Email = jwtToken.Claims.FirstOrDefault(w => w.Type == ClaimTypes.Email)?.Value ?? "Undefined",
-                Id = int.Parse(jwtToken.Claims.FirstOrDefault(w => w.Type == ClaimTypes.Sid)?.Value ?? "0"),
-                Name = jwtToken.Claims.FirstOrDefault(w => w.Type == ClaimTypes.Name)?.Value ?? "Undefined",
-            };
+                token = token.CleanBreakLines();
 
-            var roles = jwtToken.Claims.Where(w => w.Type == ClaimTypes.Role).Select(s=>s.Value) ?? new List<string>();
+                var tokenHandler = new JwtSecurityTokenHandler();
 
+                var jwtToken = tokenHandler.ReadToken(token) as JwtSecurityToken;
 
-            foreach (var rol in roles)
-            {
-                userInfo.Rol.Add((RolType)int.Parse(rol));
+                if (jwtToken is null) return Result.Fail<UserInfo>(TokenErrors.NotValidToken);
+
+                return UserInfo.Build(jwtToken.Claims);
             }
-
-            return userInfo;
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "JWTTokenService - GetUser: ocurred an error, while trying to decrypt json token");
+                return Result.Fail<UserInfo>(TokenErrors.NotValidToken);
+            }
+            
 
         }
     }

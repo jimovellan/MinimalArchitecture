@@ -68,7 +68,7 @@ namespace MinimalArchitecture.Application.Features.Autorization.Login
             return Result.Ok(new LoginReponse
             {
                 Token = token,
-                RefreshToken = Guid.NewGuid().ToString(),
+                RefreshToken = newRefreshToken,
                 
             }, cancellationToken);
             
