@@ -11,6 +11,7 @@ public interface IRepositoryBase<TEntity> where TEntity: BaseEntity
 
     TEntity Insert(TEntity entity);
     void Delete(TEntity entity);
+    void Delete(List<TEntity> entities);
 
     Task<IEnumerable<TEntity>> GetWithSpecAsync(SpecificationPattern<TEntity> spec, CancellationToken cancellation = default);
 }

@@ -1,4 +1,5 @@
 ﻿using MinimalArchitecture.Common.Models;
+using MinimalArchitecture.Common.Resources;
 
 namespace MinimalArchitecture.Common.Errors
 {
@@ -9,6 +10,6 @@ namespace MinimalArchitecture.Common.Errors
         /// When unexpected error not controlled
         /// </summary>
         /// <returns></returns>
-        public static DomainError UNEXPECTED_ERROR ()=> new DomainError(UNEXPECTED_ERROR_CODE, Resources.Error.ERROR_GENERAL) ;
+        public static DomainError UNEXPECTED_ERROR ()=> new DomainError(UNEXPECTED_ERROR_CODE, Error.ERROR_GENERAL) ;
     }
 }

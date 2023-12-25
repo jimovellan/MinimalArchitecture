@@ -30,6 +30,11 @@ namespace MinimalArchitecture.Architecture.Repository
             _ctx.Set<T>().Remove(entity);
         }
 
+        public void Delete(List<T> entities)
+        {
+            _ctx.Set<T>().RemoveRange(entities);
+        }
+
         public async Task<bool> ExistAsync(Expression<Func<T, bool>> where, CancellationToken cancellationToken = default)
         {
             return await _ctx.Set<T>().AnyAsync(where, cancellationToken);

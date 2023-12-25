@@ -14,6 +14,10 @@ using MinimalArchitecture.Entities.Repository;
 using System.Reflection;
 using Microsoft.Extensions.Configuration;
 using MinimalArchitecture.Application.Features.Autorization.SeedMinimalData;
+using Quartz;
+using Microsoft.Extensions.Hosting;
+using MinimalArchitecture.Architecture.Jobs;
+using MinimalArchitecture.Architecture.Jobs.Common;
 
 namespace MinimalArchitecture.Architecture
 {
@@ -28,6 +32,7 @@ namespace MinimalArchitecture.Architecture
             ConfigureMediator(serviceCollection);
             ConfigureRepositories(serviceCollection,builder);
             ConfigureServices(serviceCollection);
+            LoadScheeduleJobs(serviceCollection).Wait();
             
         }
 
@@ -55,6 +60,57 @@ namespace MinimalArchitecture.Architecture
             //}
 
             //var x = mediator.Send(new LoginRequest() { Password = "dd", User = "dd" }).Result;
+
+
+        }
+
+
+        public static async Task LoadScheeduleJobs(IServiceCollection services)
+        {
+           
+                 services.AddQuartz(q =>
+                 {
+                     q.UseMicrosoftDependencyInjectionJobFactory();
+
+
+                     //find all class IJobApplication from this assembly
+                     var assembly = Assembly.GetAssembly(typeof(JobConfigurationAttribute));
+
+                     var classes = assembly.GetTypes()
+                                    .Where(type =>
+                                        typeof(IJob).IsAssignableFrom(type) &&
+                                        type.GetCustomAttributes(typeof(JobConfigurationAttribute), true).Length > 0
+                                    );
+
+
+                     foreach (var item in classes)
+                     {
+                         var jobkey = new JobKey(item.Name);
+                         var attribute = (JobConfigurationAttribute)item.GetCustomAttributes(typeof(JobConfigurationAttribute), true).FirstOrDefault();
+                        
+                         q.AddJob(item, jobkey,opts => opts.WithIdentity(jobkey));
+                         q.AddTrigger(opts => opts
+                        .ForJob(jobkey) // link to the HelloWorldJob
+                        .WithIdentity($"{item.Name}-trigger") // give the trigger a unique name
+                        .WithCronSchedule(attribute.CronSchedule)); // run every 5 seconds
+                     }
+
+
+
+
+                     
+                 });
+                 services.AddQuartzHostedService(opt =>
+                 {
+                     opt.WaitForJobsToComplete = true;
+                 });
+             
+
+            // will block until the last running job completes
+            
+
+
+
 
 
         }

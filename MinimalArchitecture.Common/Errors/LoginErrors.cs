@@ -1,5 +1,5 @@
-﻿using MinimalArchitecture.Common.Resources;
-using MinimalArchitecture.Common.Models;
+﻿using MinimalArchitecture.Common.Models;
+using MinimalArchitecture.Common.Resources;
 
 namespace MinimalArchitecture.Common.Errors
 {
@@ -7,6 +7,6 @@ namespace MinimalArchitecture.Common.Errors
     {
         public const string LOGIN_INVALID_CODE = "LOGININVALID";
 
-        public static DomainError LOGIN_INVALID => new DomainError(LOGIN_INVALID_CODE, Resources.Error.LOGIN_INVALID);
+        public static DomainError LOGIN_INVALID => new DomainError(LOGIN_INVALID_CODE, Error.LOGIN_INVALID);
     }
 }

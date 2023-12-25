@@ -118,16 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ERROR_GENERAL" xml:space="preserve">
-    <value>was a problem and the operation end can't be completed</value>
+    <value>Was a error and the operation finished with errors.</value>
   </data>
   <data name="LOGIN_INVALID" xml:space="preserve">
-    <value>Invalid login</value>
+    <value>Login not valid</value>
   </data>
   <data name="TOKEN_EXPIRED" xml:space="preserve">
-    <value>Token is expired</value>
+    <value>Token expired.</value>
   </data>
   <data name="TOKEN_NOT_VALID" xml:space="preserve">
-    <value>Token no valido</value>
+    <value>Invalid Token</value>
   </data>
   <data name="USR_NOT_FOUND" xml:space="preserve">
     <value>The user wasn't found</value>
