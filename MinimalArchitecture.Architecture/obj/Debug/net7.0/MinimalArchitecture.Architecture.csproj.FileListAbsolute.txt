@@ -1,8 +1,3 @@
-C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Architecture\obj\Debug\net7.0\MinimalArchitecture.Architecture.csproj.AssemblyReference.cache
-C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Architecture\obj\Debug\net7.0\MinimalArchitecture.Architecture.GeneratedMSBuildEditorConfig.editorconfig
-C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Architecture\obj\Debug\net7.0\MinimalArchitecture.Architecture.AssemblyInfoInputs.cache
-C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Architecture\obj\Debug\net7.0\MinimalArchitecture.Architecture.AssemblyInfo.cs
-C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Architecture\obj\Debug\net7.0\MinimalArchitecture.Architecture.csproj.CoreCompileInputs.cache
 C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Architecture\bin\Debug\net7.0\MinimalArchitecture.Architecture.deps.json
 C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Architecture\bin\Debug\net7.0\MinimalArchitecture.Architecture.runtimeconfig.json
 C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Architecture\bin\Debug\net7.0\MinimalArchitecture.Architecture.dll
@@ -14,6 +9,11 @@ C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Architecture\bin\Debug\net7
 C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Architecture\bin\Debug\net7.0\MinimalArchitecture.Common.pdb
 C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Architecture\bin\Debug\net7.0\MinimalArchitecture.Entities.pdb
 C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Architecture\bin\Debug\net7.0\en\MinimalArchitecture.Common.resources.dll
+C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Architecture\obj\Debug\net7.0\MinimalArchitecture.Architecture.csproj.AssemblyReference.cache
+C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Architecture\obj\Debug\net7.0\MinimalArchitecture.Architecture.GeneratedMSBuildEditorConfig.editorconfig
+C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Architecture\obj\Debug\net7.0\MinimalArchitecture.Architecture.AssemblyInfoInputs.cache
+C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Architecture\obj\Debug\net7.0\MinimalArchitecture.Architecture.AssemblyInfo.cs
+C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Architecture\obj\Debug\net7.0\MinimalArchitecture.Architecture.csproj.CoreCompileInputs.cache
 C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Architecture\obj\Debug\net7.0\MinimalArchitecture.Architecture.csproj.CopyComplete
 C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Architecture\obj\Debug\net7.0\MinimalArchitecture.Architecture.dll
 C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Architecture\obj\Debug\net7.0\refint\MinimalArchitecture.Architecture.dll

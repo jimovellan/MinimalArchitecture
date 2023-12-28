@@ -52,6 +52,7 @@ namespace MinimalArchitecture.Common.Results
         {
             return new Result(errors, cancellationToken);
         }
+
         public static Result Fail(DomainError error, CancellationToken cancellationToken = default)
         {
             return new Result(new[] { error }, cancellationToken);
@@ -61,7 +62,6 @@ namespace MinimalArchitecture.Common.Results
         {
             return new Result(cancellationToken);
         }
-
 
         public static Result<T> Fail<T>(IEnumerable<DomainError> errors, CancellationToken cancellationToken = default)
         {

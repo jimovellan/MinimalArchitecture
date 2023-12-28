@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
 using MinimalArchitecture.Application.Services;
+using MinimalArchitecture.Common.Extensions;
 using MinimalArchitecture.Common.Results;
 using MinimalArchitecture.Entities.Authorization.Models;
 using MinimalArchitecture.Entities.Repository;
@@ -52,6 +53,8 @@ namespace MinimalArchitecture.Application.Features.Autorization.SeedMinimalData
             await _unitOfWork.Save();
 
             var rolAdminin = (await _rolRepository.GetAsync(x=>x.Id == 1)).FirstOrDefault();
+
+            rolAdminin!.ThrowExceptionIfNull(nameof(rolAdminin));
 
             if(!_userRepository.GetQuery().Any(x=>x.Name == "Administrador"))
             {

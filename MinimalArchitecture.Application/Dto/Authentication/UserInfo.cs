@@ -16,8 +16,8 @@ namespace MinimalArchitecture.Application.Dto.Authentication
             Rol = new List<RolType>(); 
         }
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Email { get; set; }
+        public string? Name { get; set; }
+        public string? Email { get; set; }
         public ICollection<RolType> Rol { get; set; }
 
         /// <summary>

@@ -10,6 +10,7 @@ using MinimalArchitecture.Entities.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -43,6 +44,8 @@ namespace MinimalArchitecture.Application.Features.Autorization.Login
 
             var user = usersFinded.FirstOrDefault();
 
+            if(user is null) return Result.Fail<LoginReponse>(UserErrors.UserNotFound,cancellationToken);
+
             if(!_passwordValidator.Validate(request.Password!, user.Hash!)) return Result.Fail<LoginReponse>(LoginErrors.LOGIN_INVALID,cancellationToken);
 
             var token = _tokenService.GenerateToken(user);
@@ -54,6 +57,7 @@ namespace MinimalArchitecture.Application.Features.Autorization.Login
 
 
             var newRefreshToken = Guid.NewGuid().ToString();
+
             user.Tokens!.Add(new Token()
             {
                 AsociatedToken = token,

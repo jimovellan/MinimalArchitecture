@@ -1,23 +1,22 @@
 using Carter;
-using FluentValidation.AspNetCore;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.OpenApi.Models;
-using MinimalArchitecture.Api.EndPoints;
-using MinimalArchitecture.Api.Middlewares;
-using System.Reflection;
-using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.OData;
+using Microsoft.OData.Edm;
+using Microsoft.OData.ModelBuilder;
+using Microsoft.OpenApi.Models;
 using MinimalArchitecture.Api.configuration;
-using Microsoft.AspNetCore.Mvc.Authorization;
+using MinimalArchitecture.Api.Extensions;
+using MinimalArchitecture.Api.Middlewares;
 using MinimalArchitecture.Architecture;
+using MinimalArchitecture.Entities.Authorization.Models;
+using MinimalArchitecture.Entities.Posts.Models;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 
 
-
+builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOptions();
 builder.Configuration.SetBasePath(Directory.GetCurrentDirectory())
                     .AddJsonFile("appsettings.Development.json", optional: false, reloadOnChange: true);
@@ -26,15 +25,21 @@ builder.Configuration.SetBasePath(Directory.GetCurrentDirectory())
 builder.Services.AddAuthenticationCustom(builder.Configuration);
 builder.Services.AddHttpContextAccessor();
 
-builder.Services.AddCarter();
+
+//builder.Services.AddCarter();
 builder.Services.AddAuthorization();
+
+
+
 //All configuration of architecture
 //Mediator
 //validations
 //EntityFramework
 //databases
 MinimalArchitecture.Architecture.Startup.Configure(builder.Services,builder);
-builder.Services.AddEndpointsApiExplorer();
+
+
+
 builder.Services.AddSwaggerGen(setup =>
 {
     setup.SwaggerDoc("v1", new OpenApiInfo { Title = "Minimal Architecture", Version = "v1" });
@@ -68,10 +73,11 @@ builder.Services.AddSwaggerGen(setup =>
     });
 });
 
+builder.Services.AddControllers().AddOData(opt =>
+            opt.Select()
+            .Filter().Expand().OrderBy().SetMaxTop(null).Count().AddRouteComponents("odata", GetEdmModel()));
+
 var app = builder.Build();
-
-
-
 
 
 MinimalArchitecture.Architecture.Startup.AplyMigrationsAuto(app);
@@ -85,11 +91,7 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-app.MapCarter();
-
 app.AuthenticationAndAutenticationCustom();
-
-
 
 #region Middlewares
 app.UseMiddleware<LanguageMiddleware>();
@@ -98,4 +100,17 @@ app.UseMiddleware<CatchErrorMiddleware>();
 
 app.SeedDataNecesary();
 
+app.MapControllers().RequireAuthorization();
+
 app.Run();
+
+static IEdmModel GetEdmModel()
+{
+    ODataConventionModelBuilder modelBuilder = new ODataConventionModelBuilder();
+
+    //Add all odata endpoints
+
+    modelBuilder.SetEntitiesFromAssempbly(Assembly.GetAssembly(typeof(Program)));
+     
+    return modelBuilder.GetEdmModel();
+}

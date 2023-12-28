@@ -37,8 +37,8 @@ namespace MinimalArchitecture.Api.configuration
 
             if (active)
             {
-                
-                app.UseAuthentication();
+
+                app.UseAuthentication(); ;
                 app.UseAuthorization();
                 
             }

@@ -18,6 +18,7 @@ using Quartz;
 using Microsoft.Extensions.Hosting;
 using MinimalArchitecture.Architecture.Jobs;
 using MinimalArchitecture.Architecture.Jobs.Common;
+using MinimalArchitecture.Common.Extensions;
 
 namespace MinimalArchitecture.Architecture
 {
@@ -27,15 +28,18 @@ namespace MinimalArchitecture.Architecture
 
         public static void Configure(IServiceCollection serviceCollection,WebApplicationBuilder builder)
         {
-            
             LoadOptions(serviceCollection, builder.Configuration);
             ConfigureMediator(serviceCollection);
             ConfigureRepositories(serviceCollection,builder);
             ConfigureServices(serviceCollection);
             LoadScheeduleJobs(serviceCollection).Wait();
-            
         }
 
+        /// <summary>
+        /// Load all the data from the settings to consume into aplication
+        /// </summary>
+        /// <param name="serviceCollection"></param>
+        /// <param name="configuration"></param>
         public static void LoadOptions(IServiceCollection serviceCollection, ConfigurationManager configuration)
         {
             
@@ -48,30 +52,25 @@ namespace MinimalArchitecture.Architecture
             using (var scope = builder.Services.CreateScope())
             {
                 var mediator = scope.ServiceProvider.GetService<IMediator>();
-                var result = mediator.Send(new SeedMinimalDataRequest()).Result;
+
+                mediator!.ThrowExceptionIfNull(nameof(mediator));
+
+                var result = mediator!.Send(new SeedMinimalDataRequest()).Result;
             }
-            
-
-            //var result = mediator.Send(new SeedMinimalDataRequest()).Result;
-
-            //if (result.IsFailed)
-            //{
-            //    throw new Exception("Error al crear los datos minimos");
-            //}
-
-            //var x = mediator.Send(new LoginRequest() { Password = "dd", User = "dd" }).Result;
-
 
         }
 
-
+        /// <summary>
+        /// Load the methods to run on back process
+        /// </summary>
+        /// <param name="services"></param>
+        /// <returns></returns>
         public static async Task LoadScheeduleJobs(IServiceCollection services)
         {
            
                  services.AddQuartz(q =>
                  {
                      q.UseMicrosoftDependencyInjectionJobFactory();
-
 
                      //find all class IJobApplication from this assembly
                      var assembly = Assembly.GetAssembly(typeof(JobConfigurationAttribute));
@@ -83,36 +82,29 @@ namespace MinimalArchitecture.Architecture
                                     );
 
 
-                     foreach (var item in classes)
+                     foreach (var cls in classes)
                      {
-                         var jobkey = new JobKey(item.Name);
-                         var attribute = (JobConfigurationAttribute)item.GetCustomAttributes(typeof(JobConfigurationAttribute), true).FirstOrDefault();
+                         var jobkey = new JobKey(cls.Name);
                         
-                         q.AddJob(item, jobkey,opts => opts.WithIdentity(jobkey));
+                         var attribute = (JobConfigurationAttribute)cls.GetCustomAttributes(typeof(JobConfigurationAttribute), true).FirstOrDefault();
+
+                         attribute?.ThrowExceptionIfNull(nameof(attribute));
+
+                         q.AddJob(cls, jobkey,opts => opts.WithIdentity(jobkey));
+
                          q.AddTrigger(opts => opts
-                        .ForJob(jobkey) // link to the HelloWorldJob
-                        .WithIdentity($"{item.Name}-trigger") // give the trigger a unique name
-                        .WithCronSchedule(attribute.CronSchedule)); // run every 5 seconds
+                                    .ForJob(jobkey) 
+                                    .WithIdentity($"{cls.Name}-trigger")
+                                    .WithCronSchedule(attribute!.CronSchedule)); 
                      }
 
 
-
-
-                     
                  });
                  services.AddQuartzHostedService(opt =>
                  {
                      opt.WaitForJobsToComplete = true;
                  });
              
-
-            // will block until the last running job completes
-            
-
-
-
-
-
         }
 
         /// <summary>
@@ -127,8 +119,6 @@ namespace MinimalArchitecture.Architecture
                 dbContext.Database.Migrate();
             }
         }
-
-       
 
         /// <summary>
         /// configuration de external services

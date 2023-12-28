@@ -25,12 +25,21 @@ namespace MinimalArchitecture.Architecture.Repository
             return _ctx.Set<T>().Where(where).CountAsync(cancellationToken);
         }
 
+        public void Update(T entity)
+        {
+            _ctx.Update(entity);
+        }
+        public void Update(IEnumerable<T> entities)
+        {
+            _ctx.UpdateRange(entities);
+        }
+
         public void Delete(T entity)
         {
             _ctx.Set<T>().Remove(entity);
         }
 
-        public void Delete(List<T> entities)
+        public void Delete(IEnumerable<T> entities)
         {
             _ctx.Set<T>().RemoveRange(entities);
         }
@@ -77,11 +86,17 @@ namespace MinimalArchitecture.Architecture.Repository
             return await _specificationResolver.Execute(spec, cancellation);
         }
 
-        public T Insert(T entity)
+        public void Insert(T entity)
         {
             _ctx.Set<T>().Add(entity);
 
-            return entity;
+           
+        }
+
+        public void Insert(IEnumerable<T> entities)
+        {
+            _ctx.Set<T>().AddRange(entities);
+
         }
 
     }

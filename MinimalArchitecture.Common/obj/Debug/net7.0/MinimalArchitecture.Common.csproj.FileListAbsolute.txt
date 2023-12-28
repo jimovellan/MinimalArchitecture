@@ -1,3 +1,7 @@
+C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Common\bin\Debug\net7.0\MinimalArchitecture.Common.deps.json
+C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Common\bin\Debug\net7.0\MinimalArchitecture.Common.dll
+C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Common\bin\Debug\net7.0\MinimalArchitecture.Common.pdb
+C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Common\bin\Debug\net7.0\en\MinimalArchitecture.Common.resources.dll
 C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Common\obj\Debug\net7.0\MinimalArchitecture.Common.csproj.AssemblyReference.cache
 C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Common\obj\Debug\net7.0\MinimalArchitecture.Common.Resources.Error.resources
 C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Common\obj\Debug\net7.0\MinimalArchitecture.Common.Resources.Error.en.resources
@@ -6,10 +10,6 @@ C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Common\obj\Debug\net7.0\Min
 C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Common\obj\Debug\net7.0\MinimalArchitecture.Common.AssemblyInfoInputs.cache
 C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Common\obj\Debug\net7.0\MinimalArchitecture.Common.AssemblyInfo.cs
 C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Common\obj\Debug\net7.0\MinimalArchitecture.Common.csproj.CoreCompileInputs.cache
-C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Common\bin\Debug\net7.0\MinimalArchitecture.Common.deps.json
-C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Common\bin\Debug\net7.0\MinimalArchitecture.Common.dll
-C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Common\bin\Debug\net7.0\MinimalArchitecture.Common.pdb
-C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Common\bin\Debug\net7.0\en\MinimalArchitecture.Common.resources.dll
 C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Common\obj\Debug\net7.0\en\MinimalArchitecture.Common.resources.dll
 C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Common\obj\Debug\net7.0\MinimalArchitecture.Common.dll
 C:\Proyectos\MinimalArchitecture\MinimalArchitecture.Common\obj\Debug\net7.0\refint\MinimalArchitecture.Common.dll

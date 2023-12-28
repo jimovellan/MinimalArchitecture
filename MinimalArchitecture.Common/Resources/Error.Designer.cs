@@ -79,6 +79,51 @@ namespace MinimalArchitecture.Common.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Existe un tag ya con ese nombre..
+        /// </summary>
+        public static string TAG_EXIST_PREVIOUS {
+            get {
+                return ResourceManager.GetString("TAG_EXIST_PREVIOUS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El tag no se pudo eliminar.
+        /// </summary>
+        public static string TAG_NO_DELETE {
+            get {
+                return ResourceManager.GetString("TAG_NO_DELETE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El tag no se encontro..
+        /// </summary>
+        public static string TAG_NO_FOUND {
+            get {
+                return ResourceManager.GetString("TAG_NO_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El tag no se pudo insertar.
+        /// </summary>
+        public static string TAG_NO_INSERT {
+            get {
+                return ResourceManager.GetString("TAG_NO_INSERT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El tag no se pudo actualizar.
+        /// </summary>
+        public static string TAG_NO_UPDATE {
+            get {
+                return ResourceManager.GetString("TAG_NO_UPDATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a El token expiró.
         /// </summary>
         public static string TOKEN_EXPIRED {

@@ -1,24 +1,32 @@
 ﻿using Carter;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using MinimalArchitecture.Application.Services;
 using MinimalArchitecture.Common.Results;
 
 namespace MinimalArchitecture.Api.EndPoints
 {
-    public class Token:CarterModule
+    [ApiController]
+    [Route("[controller]")]
+    public class TokenController:ControllerBase
     {
-        public override void AddRoutes(IEndpointRouteBuilder app)
+        private readonly ITokenService tokenService;
+
+        public TokenController(ITokenService tokenService)
         {
-            var map = app.MapGroup("api/token");
-            map.MapGet("Validate/{token}",ValidateToken);
+            this.tokenService = tokenService;
         }
+
+
+
 
         /// <summary>
         /// Validate de integrity of tokken
         /// </summary>
         /// <param name="token"></param>
         /// <returns></returns>
-        public  static Result ValidateToken(ITokenService tokenService, string token)
+        [HttpGet("validate/{token}")]
+        public async Task<Result> ValidateToken(string token, CancellationToken cancellation)
         {
             return tokenService.ValidateToken(token);
         }

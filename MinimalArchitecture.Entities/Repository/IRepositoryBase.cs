@@ -9,9 +9,12 @@ public interface IRepositoryBase<TEntity> where TEntity: BaseEntity
     Task<bool> ExistAsync(Expression<Func<TEntity, bool>> where, CancellationToken cancellationToken = default);
     Task<int> CountAsync(Expression<Func<TEntity, bool>> where, CancellationToken cancellationToken = default);
 
-    TEntity Insert(TEntity entity);
+    void Insert(TEntity entity);
+    void Insert(IEnumerable<TEntity> entity);
+    void Update(TEntity entity);
+    void Update(IEnumerable<TEntity> entity);
     void Delete(TEntity entity);
-    void Delete(List<TEntity> entities);
+    void Delete(IEnumerable<TEntity> entities);
 
     Task<IEnumerable<TEntity>> GetWithSpecAsync(SpecificationPattern<TEntity> spec, CancellationToken cancellation = default);
 }

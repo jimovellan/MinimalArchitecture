@@ -123,11 +123,26 @@
   <data name="LOGIN_INVALID" xml:space="preserve">
     <value>Login not valid</value>
   </data>
+  <data name="TAG_EXIST_PREVIOUS" xml:space="preserve">
+    <value>Exist a tag previously with that name.</value>
+  </data>
+  <data name="TAG_NO_DELETE" xml:space="preserve">
+    <value>Tag was not deleted.</value>
+  </data>
+  <data name="TAG_NO_FOUND" xml:space="preserve">
+    <value>Tag not found.</value>
+  </data>
+  <data name="TAG_NO_INSERT" xml:space="preserve">
+    <value>Tag was not inserted.</value>
+  </data>
+  <data name="TAG_NO_UPDATE" xml:space="preserve">
+    <value>Tag was not updated.</value>
+  </data>
   <data name="TOKEN_EXPIRED" xml:space="preserve">
     <value>Token expired.</value>
   </data>
   <data name="TOKEN_NOT_VALID" xml:space="preserve">
-    <value>Invalid Token</value>
+    <value>Invalid Token.</value>
   </data>
   <data name="USR_NOT_FOUND" xml:space="preserve">
     <value>The user wasn't found</value>
