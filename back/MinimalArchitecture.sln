@@ -1,0 +1,71 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinimalArchitecture.Api", "MinimalArchitecture.Api\MinimalArchitecture.Api.csproj", "{51839A96-711C-4DE1-8D56-4A1B49DAFCF9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinimalArchitecture.Entities", "MinimalArchitecture.Entities\MinimalArchitecture.Entities.csproj", "{D387578A-1210-4BE1-B2DD-26844231524C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinimalArchitecture.Application", "MinimalArchitecture.Application\MinimalArchitecture.Application.csproj", "{81DD89FD-8AF5-4097-9F99-E100382DC148}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinimalArchitecture.Architecture", "MinimalArchitecture.Architecture\MinimalArchitecture.Architecture.csproj", "{45B9491F-C852-4B43-947B-1119A5953CD3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinimalArchitecture.Common", "MinimalArchitecture.Common\MinimalArchitecture.Common.csproj", "{F028EFB9-43E0-4E8D-9F3A-0AF968B4CFC4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "10 Entities", "10 Entities", "{7C7F1EC8-5F9F-461F-AD57-EAF2A8622446}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "20 Application", "20 Application", "{1B99A14D-C24A-4008-BD9C-67E6BDD80F1C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "30 Architecture", "30 Architecture", "{BF4E15C7-AD38-4D86-81A3-59234788249F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "40 Api", "40 Api", "{34397754-4D24-422F-B680-77E8AA5C62BC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00 Common", "00 Common", "{4ADB7519-3193-411C-AB37-785AE49F7DB7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{EC364BE5-DDAF-4A09-B1EE-985552B73A5D}"
+	ProjectSection(SolutionItems) = preProject
+		DockerFile = DockerFile
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{51839A96-711C-4DE1-8D56-4A1B49DAFCF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51839A96-711C-4DE1-8D56-4A1B49DAFCF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51839A96-711C-4DE1-8D56-4A1B49DAFCF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51839A96-711C-4DE1-8D56-4A1B49DAFCF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D387578A-1210-4BE1-B2DD-26844231524C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D387578A-1210-4BE1-B2DD-26844231524C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D387578A-1210-4BE1-B2DD-26844231524C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D387578A-1210-4BE1-B2DD-26844231524C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81DD89FD-8AF5-4097-9F99-E100382DC148}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81DD89FD-8AF5-4097-9F99-E100382DC148}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81DD89FD-8AF5-4097-9F99-E100382DC148}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81DD89FD-8AF5-4097-9F99-E100382DC148}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45B9491F-C852-4B43-947B-1119A5953CD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45B9491F-C852-4B43-947B-1119A5953CD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45B9491F-C852-4B43-947B-1119A5953CD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45B9491F-C852-4B43-947B-1119A5953CD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F028EFB9-43E0-4E8D-9F3A-0AF968B4CFC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F028EFB9-43E0-4E8D-9F3A-0AF968B4CFC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F028EFB9-43E0-4E8D-9F3A-0AF968B4CFC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F028EFB9-43E0-4E8D-9F3A-0AF968B4CFC4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{51839A96-711C-4DE1-8D56-4A1B49DAFCF9} = {34397754-4D24-422F-B680-77E8AA5C62BC}
+		{D387578A-1210-4BE1-B2DD-26844231524C} = {7C7F1EC8-5F9F-461F-AD57-EAF2A8622446}
+		{81DD89FD-8AF5-4097-9F99-E100382DC148} = {1B99A14D-C24A-4008-BD9C-67E6BDD80F1C}
+		{45B9491F-C852-4B43-947B-1119A5953CD3} = {BF4E15C7-AD38-4D86-81A3-59234788249F}
+		{F028EFB9-43E0-4E8D-9F3A-0AF968B4CFC4} = {4ADB7519-3193-411C-AB37-785AE49F7DB7}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {499F602D-816D-4E55-BE2B-83A04A115E75}
+	EndGlobalSection
+EndGlobal

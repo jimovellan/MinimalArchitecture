@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MinimalArchitecture.Api</name>
+    </assembly>
+    <members>
+        <member name="M:MinimalArchitecture.Api.EndPoints.TokenController.ValidateToken(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Validate de integrity of tokken
+            </summary>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MinimalArchitecture.Api.Extensions.ODataConventionModelBuilderExtension.SetEntitiesFromAssempbly(Microsoft.OData.ModelBuilder.ODataConventionModelBuilder,System.Reflection.Assembly)">
+            <summary>
+            Load all oData from controllers that inherit QueryableController
+            </summary>
+            <param name="modelBuilder"></param>
+            <param name="assembly"></param>
+        </member>
+    </members>
+</doc>

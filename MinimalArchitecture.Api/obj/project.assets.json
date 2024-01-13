@@ -1669,6 +1669,7 @@
           "MinimalArchitecture.Application": "1.0.0",
           "MinimalArchitecture.Common": "1.0.0",
           "MinimalArchitecture.Entities": "1.0.0",
+          "Newtonsoft.Json": "13.0.3",
           "Quartz": "3.8.0",
           "Quartz.AspNetCore": "3.8.0",
           "Quartz.Extensions.DependencyInjection": "3.8.0"

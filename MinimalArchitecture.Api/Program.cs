@@ -8,6 +8,7 @@ using MinimalArchitecture.Api.configuration;
 using MinimalArchitecture.Api.Extensions;
 using MinimalArchitecture.Api.Middlewares;
 using MinimalArchitecture.Architecture;
+using MinimalArchitecture.Architecture.Cache;
 using MinimalArchitecture.Entities.Authorization.Models;
 using MinimalArchitecture.Entities.Posts.Models;
 using System.Reflection;
@@ -18,6 +19,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOptions();
+builder.Services.AddDistributedMemoryCache();
 builder.Configuration.SetBasePath(Directory.GetCurrentDirectory())
                     .AddJsonFile("appsettings.Development.json", optional: false, reloadOnChange: true);
 
@@ -29,7 +31,7 @@ builder.Services.AddHttpContextAccessor();
 //builder.Services.AddCarter();
 builder.Services.AddAuthorization();
 
-
+builder.Services.AddCacheDistributedSQLSERVER(builder.Configuration.GetConnectionString("app"),3);
 
 //All configuration of architecture
 //Mediator

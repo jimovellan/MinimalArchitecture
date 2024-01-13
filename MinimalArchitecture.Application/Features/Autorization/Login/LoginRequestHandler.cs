@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using MinimalArchitecture.Application.Services;
 using MinimalArchitecture.Common.Errors;
@@ -22,20 +23,27 @@ namespace MinimalArchitecture.Application.Features.Autorization.Login
         private readonly IPasswordValidation _passwordValidator;
         private readonly ITokenService _tokenService;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IMemoryCache memoryCache;
 
         public LoginRequestHandler(IRepositoryBase<User> userRepository,
                                    IPasswordValidation passwordValidator,
                                    ITokenService tokenService,
-                                   IUnitOfWork unitOfWork)
+                                   IUnitOfWork unitOfWork,
+                                   IMemoryCache memoryCache)
         {
             _userRepository = userRepository;
             _passwordValidator = passwordValidator;
             _tokenService = tokenService;
             _unitOfWork = unitOfWork;
-            
+            this.memoryCache = memoryCache;
         }
         public async Task<Result<LoginReponse>> Handle(LoginRequest request, CancellationToken cancellationToken)
         {
+            var value = memoryCache.Get<int?>("prueba");
+            if(value is null){
+                memoryCache.Set<int>("prueba", 5);
+            }
+            
 
             var usersFinded = await _userRepository.GetWithSpecAsync(new GetUserByNameCompleted(request.User!,true),cancellationToken);
             

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "8dcn8WkGbZ7GWsFA7zq8FKQ8LjnUMf1URJg/M6xI9/QutiORyTWJxgg+WhHTHbiU4BFxJhZnO8H7HkwjKpKzog==",
+  "dgSpecHash": "46zGdoV91psmfOkIxmqBPTD68BQDWOlgeJWI4ruC2C1e5PJcM4qbGDOi/ncaV9m40EyB5m9kW76RVY/QubfUEw==",
   "success": true,
   "projectFilePath": "C:\\Proyectos\\MinimalArchitecture\\MinimalArchitecture.Architecture\\MinimalArchitecture.Architecture.csproj",
   "expectedPackageFiles": [
@@ -52,6 +52,7 @@
     "C:\\Users\\nacho\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\nacho\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\nacho\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
+    "C:\\Users\\nacho\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\nacho\\.nuget\\packages\\quartz\\3.8.0\\quartz.3.8.0.nupkg.sha512",
     "C:\\Users\\nacho\\.nuget\\packages\\quartz.aspnetcore\\3.8.0\\quartz.aspnetcore.3.8.0.nupkg.sha512",
     "C:\\Users\\nacho\\.nuget\\packages\\quartz.extensions.dependencyinjection\\3.8.0\\quartz.extensions.dependencyinjection.3.8.0.nupkg.sha512",

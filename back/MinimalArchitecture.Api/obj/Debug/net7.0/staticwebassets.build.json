@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "TwZbYBMOnprHPtX+4A+y/VGSIyjRjphh0KdMy4DjKHg=",
+  "Source": "MinimalArchitecture.Api",
+  "BasePath": "_content/MinimalArchitecture.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
